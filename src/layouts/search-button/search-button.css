@@ -2,7 +2,7 @@
     width: 50px;
     height: 50px;
     border-radius: 6px;
-    background: #FF5555;
+    background: var(--color-enabled-main);
     outline: none;
     border: none;
 }
@@ -17,5 +17,5 @@
 }
 
 .search-button:disabled {
-    background: #D9D9D9;
+    background: var(--color-disabled-main);
 }
