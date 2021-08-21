@@ -6,6 +6,7 @@
     padding: 12px;
     box-sizing: border-box;
     cursor: pointer;
+    display: flex;
 }
 
 .repo-card:hover {
@@ -15,7 +16,6 @@
 .repo-card__avatar {
     width: 80px;
     height: 80px;
-    display: inline-block;
     margin: 0;
     border-radius: 50%;
     overflow: hidden;
@@ -26,7 +26,6 @@
     padding: 0;
     margin: 0;
     margin-left: 12px;
-    display: inline-block;
     font-family: Roboto;
     vertical-align: top;
     margin-top: 11px;
@@ -69,7 +68,7 @@
     margin-right: 0.5em;
 }
 
-.repo-card_update {
+.repo-card__update {
     display: inline;
     margin-top: 4px;
     font-size: 14px;
