@@ -13,19 +13,18 @@ export default class GitHubStore implements IGitHubStore {
 
         const rp: RequestParams<GetOrganizationReposListParams> = {
             method: HTTPMethod.GET,
-            endpoint: `/orgs/${params.org}/repos`,
+            endpoint: `orgs/${params.org}/repos`,
             headers: { 'accept': 'application/vnd.github.v3+json'},
             data: params
         }
 
-        const answer = await this.apiStore.request<string, any, GetOrganizationReposListParams>(rp);
-        
-        return new Promise<ApiResp<RepoItem[]>>((resolve) => {
-            const apiResp: ApiResp<RepoItem[]> = {
-                data: answer.data as RepoItem[],
-                HTTPStatus: StatusHTTP.OK
-            }
-            resolve(apiResp);
-        })
+        const answer = await this.apiStore.request(rp);
+
+        const apiResp: ApiResp<RepoItem[]> = {
+            data: answer.data as RepoItem[],
+            HTTPStatus: StatusHTTP.OK
+        }
+
+        return apiResp;
     }
 }

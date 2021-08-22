@@ -9,11 +9,12 @@
     display: flex;
     grid-column-start: 1;
     grid-column-end: 3;
+    transition: 0.5s;
+    align-items: center;
 }
 
 .repo-card:hover {
     box-shadow: var(--box-shadow-hover);
-    transition: 0.5s;
 }
 
 .repo-card__avatar {
@@ -30,13 +31,11 @@
     margin: 0;
     margin-left: 12px;
     font-family: Roboto;
-    vertical-align: top;
-    margin-top: 11px;
     width: 235px;
 }
 
 .repo-card__title {
-    font-weight: 900;
+    font-weight: 700;
     font-size: 16px;
     white-space: nowrap;
     overflow: hidden;
@@ -45,20 +44,21 @@
 
 .repo-card__author {
     margin: 4px 0px;
-    opacity: 0.6;
+    color: var(--color-side-text);
     font-size: 14px;
     cursor: pointer;
 }
 
 .repo-card__author:hover {
-    opacity: 1;
+    color: var(--link-hover);
 }
 
 .repo-card__rating {
     display: inline;
     margin-top: 4px;
     font-size: 14px;
-    margin-right: 1em;
+    margin-right: 20px;
+    color: var(--color-side-text);
 }
 
 .repo-card__rating::before {
@@ -66,18 +66,19 @@
     display: inline-block;
     width: 14px;
     height: 14px;
-    background: url("./Vector.svg") no-repeat center / cover;
+    background: url("./star.svg") no-repeat center / cover;
     vertical-align: text-top;
-    margin-right: 0.5em;
+    margin-right: 5px;
 }
 
 .repo-card__update {
     display: inline;
     margin-top: 4px;
     font-size: 14px;
+    color: var(--color-side-text);
 }
 
-img {
+.img-cover {
     width: 100%;
     height: 100%;
     object-fit: cover;

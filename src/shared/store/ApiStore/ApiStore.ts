@@ -1,3 +1,4 @@
+import qs from 'qs';
 import {ApiResponse, IApiStore, RequestParams, StatusHTTP, HTTPMethod} from './types';
 
 export default class ApiStore implements IApiStore {
@@ -7,46 +8,34 @@ export default class ApiStore implements IApiStore {
         this.baseUrl = baseUrl;
     }
 
-    request<SuccessT, ErrorT = any, ReqT = {}>(params: RequestParams<ReqT>): Promise<ApiResponse<SuccessT, ErrorT>> {
+    async request<SuccessT, ErrorT = any, ReqT = {}>(params: RequestParams<ReqT>): Promise<ApiResponse<SuccessT, ErrorT>> {
         // DONE: Напишите здесь код, который с помощью fetch будет делать запрос
         const method = params.method || HTTPMethod.GET;
 
-        if (method === HTTPMethod.GET) { // Составление qs
-            let qs = '?';
+        let query = '';
 
-            Object.entries(params.data).forEach(([key, val]) => {
-                qs += `${key}=${val}&`;
-            })
-
-            params.endpoint += qs;
+        if (method === HTTPMethod.GET) {
+            query = qs.stringify(params.data);
         }
-
-        return fetch(this.baseUrl + params.endpoint, {
+        
+        const answer = await fetch(`${this.baseUrl}/${params.endpoint}?${query}`, {
             method: method,
             headers: params.headers
-        }).then((data: Response) => {
-            if (data.ok) {
-                return data.json().then(dataJson => {
-                    return new Promise<ApiResponse<SuccessT, ErrorT>>((resolve, reject) => {
-                        const apiResponse: ApiResponse<SuccessT, ErrorT> = {
-                            success: true,
-                            data: dataJson as SuccessT,
-                            status: StatusHTTP.OK
-                        }
-                        resolve(apiResponse);
-                    })
-                })
-            }
-            return data.json().then(dataJson => {
-                return new Promise<ApiResponse<SuccessT, ErrorT>>((resolve, reject) => {
-                    const apiResponse: ApiResponse<SuccessT, ErrorT> = {
-                        success: false,
-                        data: dataJson as ErrorT,
-                        status: StatusHTTP.NOTFOUND
-                    }
-                    resolve(apiResponse);
-                })
-            })
         })
+        
+        const answerJson = await answer.json();
+        if (answer.ok) {
+            return {
+                success: true,
+                data: answerJson as SuccessT,
+                status: StatusHTTP.OK
+            }
+        }
+        
+        return {
+            success: false,
+            data: answerJson as ErrorT,
+            status: StatusHTTP.NOTFOUND
+        }
     }
 }

@@ -5,6 +5,7 @@
     background: var(--color-enabled-main);
     outline: none;
     border: none;
+    transition: 0.5s;
 }
 
 .search-button:enabled {
@@ -12,7 +13,6 @@
 }
 
 .search-button:hover:enabled {
-    transition: 0.5s;
     opacity: 0.6;
 }
 

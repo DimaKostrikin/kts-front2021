@@ -3,6 +3,8 @@
     --color-enabled-main: #FF5555;
     --color-disabled-main: #F9F9F9;
     --box-shadow-hover: 0px 2px 6px 0px #B6B6B640;
+    --link-hover: #208FBF;
+    --color-side-text: #7E7E7E;
 }
 
 .custom-input {
@@ -14,19 +16,19 @@
     border: 1px solid var(--color-border-main);
     padding: 12px;
     box-sizing: border-box;
+    transition: 0.5s;
 }
 
 .custom-input:focus {
     outline: none;
     border: 1px solid var(--color-enabled-main);
-    transition: 0.5s;
 }
 
 .custom-input:disabled {
-    opacity: 0.6;
+    color: var(--color-side-text);
     background: var(--color-disabled-main);
 }
 
-::placeholder {
-    opacity: 0.6;
+.custom-input::placeholder {
+    color: var(--color-side-text);
 }
