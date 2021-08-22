@@ -11,7 +11,6 @@ export default class GitHubStore implements IGitHubStore {
         // DONE: Здесь сделайте вызов из this.apiStore и верните результат
         // Документация github: https://docs.github.com/en/rest/reference/repos#list-organization-repositories
 
-
         let rp: RequestParams<GetOrganizationReposListParams> = {
             method: HTTPMethod.GET,
             endpoint: `/orgs/${params.org}/repos`,
@@ -21,10 +20,9 @@ export default class GitHubStore implements IGitHubStore {
 
         const answer = await this.apiStore.request<string, any, GetOrganizationReposListParams>(rp);
         
-        console.log(answer);
-        return new Promise<ApiResp<RepoItem[]>>((resolve, reject) => {
+        return new Promise<ApiResp<RepoItem[]>>((resolve) => {
             const apiResp: ApiResp<RepoItem[]> = {
-                data: <RepoItem[]><unknown>answer.data,
+                data: answer.data as RepoItem[],
                 HTTPStatus: StatusHTTP.OK
             }
             resolve(apiResp);

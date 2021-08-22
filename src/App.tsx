@@ -7,18 +7,16 @@ function App() {
 
   gitHubStore.getOrganizationReposList({
     org: EXAMPLE_ORGANIZATION,
-    sort: 'created', // сортирую по дате создания
-    direction: 'desc', // Самые свежесозданные
-    per_page: 100, // 100 на странице
-    // ну и тд
+    sort: 'created',
+    direction: 'desc',
+    per_page: 100,
   }).then(result => {
-    console.log(result.data); // в консоли появится список репозиториев в ktsstudio
+    console.log(result.data); 
+    // в консоли появится список репозиториев в ktsstudio
   })
   
   return (
-    <div className="App">
-      <div>Пусто</div>
-    </div>
+    <div>a</div>
   );
 }
 
