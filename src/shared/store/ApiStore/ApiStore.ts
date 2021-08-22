@@ -28,7 +28,7 @@ export default class ApiStore implements IApiStore {
             if (data.ok) {
                 return data.json().then(dataJson => {
                     return new Promise<ApiResponse<SuccessT, ErrorT>>((resolve, reject) => {
-                        let apiResponse: ApiResponse<SuccessT, ErrorT> = {
+                        const apiResponse: ApiResponse<SuccessT, ErrorT> = {
                             success: true,
                             data: dataJson as SuccessT,
                             status: StatusHTTP.OK
@@ -39,7 +39,7 @@ export default class ApiStore implements IApiStore {
             }
             return data.json().then(dataJson => {
                 return new Promise<ApiResponse<SuccessT, ErrorT>>((resolve, reject) => {
-                    let apiResponse: ApiResponse<SuccessT, ErrorT> = {
+                    const apiResponse: ApiResponse<SuccessT, ErrorT> = {
                         success: false,
                         data: dataJson as ErrorT,
                         status: StatusHTTP.NOTFOUND

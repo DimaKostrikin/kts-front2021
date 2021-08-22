@@ -11,7 +11,7 @@ export default class GitHubStore implements IGitHubStore {
         // DONE: Здесь сделайте вызов из this.apiStore и верните результат
         // Документация github: https://docs.github.com/en/rest/reference/repos#list-organization-repositories
 
-        let rp: RequestParams<GetOrganizationReposListParams> = {
+        const rp: RequestParams<GetOrganizationReposListParams> = {
             method: HTTPMethod.GET,
             endpoint: `/orgs/${params.org}/repos`,
             headers: { 'accept': 'application/vnd.github.v3+json'},
