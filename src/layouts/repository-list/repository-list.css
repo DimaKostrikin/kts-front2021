@@ -1,0 +1,6 @@
+.repository-list {
+    display: grid;
+    grid-template-columns: 295px 50px;
+    grid-column-gap: 12px;
+    grid-row-gap: 16px;
+}
