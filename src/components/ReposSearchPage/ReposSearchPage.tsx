@@ -4,6 +4,7 @@ import Button from '@components/Button';
 import Input from '@components/Input';
 import RepoTile from '@components/RepoTile';
 import SearchIcon from '@components/SearchIcon';
+import { StatusHTTP } from '@src/shared/store/ApiStore/types';
 import GitHubStore from '@src/store/GitHubStore';
 import { RepoItem } from '@src/store/GitHubStore/types';
 
@@ -26,7 +27,13 @@ const ReposSearchPage = () => {
     const params = { org: inputValue };
     const answer = await gitHubStore.getOrganizationReposList(params);
 
-    setReposArray(answer.data);
+    if (answer.HTTPStatus !== StatusHTTP.OK) {
+      setLoading(false);
+      // Дорисовать сообщение об ошибке
+      return;
+    }
+
+    setReposArray(answer.data as RepoItem[]);
     setLoading(false);
   };
 
@@ -37,7 +44,7 @@ const ReposSearchPage = () => {
         <SearchIcon />
       </Button>
       {reposArray.map((rep) => {
-        return <RepoTile item={rep} />;
+        return <RepoTile key={rep.id} item={rep} />;
       })}
     </div>
   );

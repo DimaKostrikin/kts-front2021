@@ -44,7 +44,7 @@ export default class ApiStore implements IApiStore {
     return {
       success: false,
       data: answerJson as ErrorT,
-      status: StatusHTTP.NOTFOUND,
+      status: answer.status,
     };
   }
 }

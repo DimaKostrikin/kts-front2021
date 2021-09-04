@@ -32,6 +32,13 @@ export default class GitHubStore implements IGitHubStore {
 
     const answer = await this.apiStore.request(rp);
 
+    if (!answer.success) {
+      return {
+        data: answer.data,
+        HTTPStatus: answer.status,
+      };
+    }
+
     const apiResp: ApiResp<RepoItem[]> = {
       data: answer.data as RepoItem[],
       HTTPStatus: StatusHTTP.OK,
