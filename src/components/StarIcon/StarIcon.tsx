@@ -4,7 +4,7 @@ type StarIconProps = {
   fill: string;
 };
 
-const StarIcon = ({ fill }: StarIconProps) => {
+const StarIcon: React.FC<StarIconProps> = ({ fill }) => {
   return (
     <svg
       className="star-icon"

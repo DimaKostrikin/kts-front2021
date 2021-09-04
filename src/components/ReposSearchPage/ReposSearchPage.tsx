@@ -12,7 +12,7 @@ import './repository-list.css';
 
 const gitHubStore = new GitHubStore();
 
-const ReposSearchPage = () => {
+const ReposSearchPage: React.FC = () => {
   const [inputValue, setInputValue] = React.useState('');
 
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

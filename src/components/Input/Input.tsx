@@ -9,7 +9,12 @@ type InputProps = {
   disabled?: boolean;
 };
 
-const Input = ({ value, placeholder, onChange, disabled }: InputProps) => {
+const Input: React.FC<InputProps> = ({
+  value,
+  placeholder,
+  onChange,
+  disabled,
+}) => {
   return (
     <input
       onChange={onChange}

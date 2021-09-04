@@ -31,6 +31,9 @@ export interface RepoItem {
   owner: {
     login: string;
   };
+  stargazers_count: number;
+  created_at: string;
+  updated_at: string;
 }
 
 export interface ApiResp<Type> {

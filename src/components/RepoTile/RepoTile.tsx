@@ -8,7 +8,13 @@ type RepoTileProps = {
   item: RepoItem;
 };
 
-const RepoTile = ({ item }: RepoTileProps) => {
+const RepoTile: React.FC<RepoTileProps> = ({ item }) => {
+  const itemDate = new Date(item.updated_at);
+  const strDate = itemDate.toLocaleString('default', {
+    year: 'numeric',
+    month: 'long',
+    day: '2-digit',
+  });
   return (
     <div className="repo-card">
       <Avatar />
@@ -16,8 +22,8 @@ const RepoTile = ({ item }: RepoTileProps) => {
         <li className="repo-card__title">{item.full_name}</li>
         <li className="repo-card__author">{item.owner.login}</li>
         <StarIcon fill="#FF9432" />
-        <li className="repo-card__rating">{item.id}</li>
-        <li className="repo-card__update">{item.name}</li>
+        <li className="repo-card__rating">{item.stargazers_count}</li>
+        <li className="repo-card__update">{`Upd. ${strDate}`}</li>
       </ul>
     </div>
   );

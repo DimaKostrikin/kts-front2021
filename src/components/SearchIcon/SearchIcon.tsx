@@ -2,7 +2,7 @@ type SearchIconProps = {
   fill?: string;
 };
 
-const SearchIcon = ({ fill = 'white' }: SearchIconProps) => {
+const SearchIcon: React.FC<SearchIconProps> = ({ fill = 'white' }) => {
   return (
     <svg
       width="18"
