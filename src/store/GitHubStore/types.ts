@@ -30,6 +30,7 @@ export interface RepoItem {
   full_name: string;
   owner: {
     login: string;
+    avatar_url: string;
   };
   stargazers_count: number;
   created_at: string;

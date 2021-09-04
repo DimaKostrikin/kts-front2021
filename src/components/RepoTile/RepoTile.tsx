@@ -17,7 +17,7 @@ const RepoTile: React.FC<RepoTileProps> = ({ item }) => {
   });
   return (
     <div className="repo-card">
-      <Avatar />
+      <Avatar src={item.owner.avatar_url} />
       <ul className="repo-card__info">
         <li className="repo-card__title">{item.full_name}</li>
         <li className="repo-card__author">{item.owner.login}</li>
