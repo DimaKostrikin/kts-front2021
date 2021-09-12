@@ -61,16 +61,6 @@
     color: var(--color-side-text);
 }
 
-.repo-card__rating::before {
-    content: "";
-    display: inline-block;
-    width: 14px;
-    height: 14px;
-    background: url("./star.svg") no-repeat center / cover;
-    vertical-align: text-top;
-    margin-right: 5px;
-}
-
 .repo-card__update {
     display: inline;
     margin-top: 4px;
