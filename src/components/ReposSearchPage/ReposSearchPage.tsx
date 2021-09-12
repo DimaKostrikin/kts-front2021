@@ -2,7 +2,7 @@ import React from 'react';
 
 import Button from '@components/Button';
 import Input from '@components/Input';
-import RepoTile from '@components/RepoTile';
+import RepoList from '@components/RepoList';
 import SearchIcon from '@components/SearchIcon';
 import { StatusHTTP } from '@src/shared/store/ApiStore/types';
 import GitHubStore from '@src/store/GitHubStore';
@@ -10,7 +10,16 @@ import { RepoItem } from '@src/store/GitHubStore/types';
 
 import './repository-list.css';
 
+const ReposContext = React.createContext({
+  reposArray: [] as Array<RepoItem>,
+  setReposArray: (() => {}) as React.Dispatch<React.SetStateAction<RepoItem[]>>,
+});
+
+const Provider = ReposContext.Provider;
+
 const gitHubStore = new GitHubStore();
+
+export const useReposContext = () => React.useContext(ReposContext);
 
 const ReposSearchPage: React.FC = () => {
   const [inputValue, setInputValue] = React.useState('');
@@ -43,9 +52,9 @@ const ReposSearchPage: React.FC = () => {
       <Button onClick={buttonOnClick}>
         <SearchIcon />
       </Button>
-      {reposArray.map((rep) => {
-        return <RepoTile key={rep.id} item={rep} />;
-      })}
+      <Provider value={{ reposArray, setReposArray }}>
+        <RepoList />
+      </Provider>
     </div>
   );
 };
