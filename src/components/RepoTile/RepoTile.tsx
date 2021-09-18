@@ -1,6 +1,7 @@
 import Avatar from '@components/Avatar';
 import StarIcon from '@components/StarIcon';
 import { RepoItem } from '@src/store/GitHubStore/types';
+import { Link } from 'react-router-dom';
 
 import './repo.css';
 
@@ -16,7 +17,7 @@ const RepoTile: React.FC<RepoTileProps> = ({ item }) => {
     day: '2-digit',
   });
   return (
-    <div className="repo-card">
+    <Link to={`/repos/${item.id}`} className="repo-card">
       <Avatar src={item.owner.avatar_url} />
       <ul className="repo-card__info">
         <li className="repo-card__title">{item.full_name}</li>
@@ -25,7 +26,7 @@ const RepoTile: React.FC<RepoTileProps> = ({ item }) => {
         <li className="repo-card__rating">{item.stargazers_count}</li>
         <li className="repo-card__update">{`Upd. ${strDate}`}</li>
       </ul>
-    </div>
+    </Link>
   );
 };
 

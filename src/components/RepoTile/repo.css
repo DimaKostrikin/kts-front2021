@@ -11,6 +11,8 @@
     grid-column-end: 3;
     transition: 0.5s;
     align-items: center;
+    text-decoration: none;
+    color: inherit;
 }
 
 .repo-card:hover {
